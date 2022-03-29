@@ -4,11 +4,14 @@ import {
     View,
     Dimensions,
     Image,
-    StatusBar
+    StatusBar,
+    Modal,
+    Text
 } from 'react-native'
 import React, { useRef, useState, useEffect } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Header } from '../components';
+import Colors from '../ultils/Colors'
 
 const ScanBillScreen = ({ navigation, route }) => {
 
@@ -16,17 +19,149 @@ const ScanBillScreen = ({ navigation, route }) => {
     const height = Dimensions.get('window').height;
 
     const [billImage, setBillImage] = useState(require('../assets/imgs/bill.png'));
+    const [modalErrorShow, setModalErrorShow] = useState(false);
+    const [modalSuccessShow, setModalSuccessShow] = useState(false);
 
     useEffect(() => {
         takePicture();
     }, [])
 
     const takePicture = () => {
-        
+        console.log('Take picture');
     }
 
     const validateQRCode = async () => {
 
+    }
+
+    const ModalError = () => {
+        return (
+            <Modal
+                transparent
+                visible={modalErrorShow}
+                statusBarTranslucent
+                animationType={'slide'}>
+                <View style={{
+                    flex: 1,
+                    backgroundColor: 'rgba(0,0,0,.6)',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}>
+                    <Image
+                        source={require('../assets/imgs/popup_wrong_qr_code.png')}
+                        style={{
+                            position: 'absolute',
+                            width: 232 * 1.2,
+                            height: 146 * 1.2,
+                        }} />
+                    <TouchableOpacity
+                        activeOpacity={.6}
+                        onPress={takePicture}>
+                        <Image
+                            source={require('../assets/imgs/btn_startScan.png')}
+                            style={{
+                                width: 140 * 1.2,
+                                height: 40 * 1.2,
+                                marginTop: 80
+                            }} />
+                    </TouchableOpacity>
+                </View>
+            </Modal>
+        )
+    }
+
+    const ModalSuccess = ({ playCount }) => {
+        return (
+            <Modal
+                transparent
+                visible={modalSuccessShow}
+                statusBarTranslucent
+                animationType={'slide'}>
+                <View style={{
+                    flex: 1,
+                    backgroundColor: 'rgba(0,0,0,.6)',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}>
+                    <Image
+                        source={require('../assets/imgs/popup_success_qr.png')}
+                        style={{
+                            position: 'absolute',
+                            width: 260,
+                            height: 360
+                        }} />
+                    <Image
+                        source={require('../assets/imgs/ic_gift_popup_success.png')}
+                        style={{
+                            position: 'absolute',
+                            top: height * .238,
+                            width: 189,
+                            height: 93
+                        }} />
+                    <TouchableOpacity
+                        activeOpacity={.6}
+                        onPress={() => setModalSuccessShow(false)}
+                        style={{
+                            position: 'absolute',
+                            top: height * .315,
+                            left: width * .75
+                        }}>
+                        <Image
+                            source={require('../assets/imgs/btn_close_modal.png')}
+                            style={{
+                                width: 24,
+                                height: 24,
+                            }} />
+                    </TouchableOpacity>
+
+                    <View style={{
+                        position: 'absolute',
+                        top: height * .58,
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                    }}>
+                        <Text style={{
+                            fontSize: 16,
+                            color: '#333',
+                            marginBottom: 10
+                        }}>
+                            {'Bạn đang có '}
+                            <Text style={{
+                                fontSize: 19,
+                                fontWeight: 'bold',
+                                color: Colors.kBlue3Color
+                            }}>
+                                {playCount < 10 ? '0' + playCount : playCount}
+                            </Text>
+                            {' lượt chơi'}
+                        </Text>
+                        <TouchableOpacity
+                            activeOpacity={.6}
+                            onPress={takePicture}
+                            style={{
+                                marginBottom: 10
+                            }}>
+                            <Image
+                                source={require('../assets/imgs/btn_continue_scan.png')}
+                                style={{
+                                    width: 122,
+                                    height: 36,
+                                }} />
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            activeOpacity={.6}
+                            onPress={() => navigation.replace('Home')}>
+                            <Image
+                                source={require('../assets/imgs/btn_play_now.png')}
+                                style={{
+                                    width: 122,
+                                    height: 36,
+                                }} />
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </Modal>
+        )
     }
 
     const Background = () => {
@@ -85,6 +220,8 @@ const ScanBillScreen = ({ navigation, route }) => {
         <SafeAreaView style={{ flex: 1 }}>
             <Background />
             <StatusBar translucent backgroundColor={'rgba(0,0,0,0)'} />
+            <ModalError />
+            <ModalSuccess playCount={8} />
             <Header
                 navigation={navigation}
                 title={'QUÉT MÃ'}

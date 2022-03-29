@@ -205,7 +205,8 @@ const HomeScreen = ({ navigation, route }) => {
 
                 <TouchableOpacity
                     style={styles.btn}
-                    activeOpacity={.6}>
+                    activeOpacity={.6}
+                    onPress={() => navigation.navigate('ScanBill')}>
                     <Image source={require('../assets/imgs/btn_scanQR.png')} />
                 </TouchableOpacity>
                 <TouchableOpacity
