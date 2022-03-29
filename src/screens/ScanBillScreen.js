@@ -58,7 +58,7 @@ const ScanBillScreen = ({ navigation, route }) => {
                         activeOpacity={.6}
                         onPress={takePicture}>
                         <Image
-                            source={require('../assets/imgs/btn_startScan.png')}
+                            source={require('../assets/imgs/btn_reScan.png')}
                             style={{
                                 width: 140 * 1.2,
                                 height: 40 * 1.2,
@@ -254,7 +254,9 @@ const ScanBillScreen = ({ navigation, route }) => {
                 alignItems: 'center'
             }}>
                 <TouchableOpacity activeOpacity={.6} onPress={validateQRCode}>
-                    <Image source={require('../assets/imgs/btn_startScan.png')} />
+                    <Image
+                        source={require('../assets/imgs/btn_startScan.png')}
+                    />
                 </TouchableOpacity>
             </View>
         </SafeAreaView>
