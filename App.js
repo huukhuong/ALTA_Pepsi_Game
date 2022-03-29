@@ -11,7 +11,7 @@ function App() {
 		<NavigationContainer>
 			<Stack.Navigator
 				screenOptions={{ headerShown: false }}
-				initialRouteName='ScanBill'>
+				initialRouteName='Home'>
 				<Stack.Screen name="Login" component={LoginScreen} />
 				<Stack.Screen name="Signup" component={SignupScreen} />
 				<Stack.Screen name="Rules" component={RulesScreen} />
