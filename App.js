@@ -2,7 +2,7 @@ import React from "react";
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
-import { CongratulationScreen, HomeScreen, LoginScreen, OTPScreen, PlayGameScreen, RulesScreen, SignupScreen, TutorialScreen } from "./src/screens";
+import { CongratulationScreen, HomeScreen, LoginScreen, OTPScreen, PlayGameScreen, RulesScreen, ScanBillScreen, SignupScreen, TutorialScreen } from "./src/screens";
 
 const Stack = createNativeStackNavigator();
 
@@ -11,7 +11,7 @@ function App() {
 		<NavigationContainer>
 			<Stack.Navigator
 				screenOptions={{ headerShown: false }}
-				initialRouteName='Login'>
+				initialRouteName='ScanBill'>
 				<Stack.Screen name="Login" component={LoginScreen} />
 				<Stack.Screen name="Signup" component={SignupScreen} />
 				<Stack.Screen name="Rules" component={RulesScreen} />
@@ -20,6 +20,7 @@ function App() {
 				<Stack.Screen name="Tutorial" component={TutorialScreen} />
 				<Stack.Screen name="PlayGame" component={PlayGameScreen} />
 				<Stack.Screen name="Congratulation" component={CongratulationScreen} />
+				<Stack.Screen name="ScanBill" component={ScanBillScreen} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);
