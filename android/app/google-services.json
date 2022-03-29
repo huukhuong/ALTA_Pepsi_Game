@@ -1,0 +1,76 @@
+{
+  "project_info": {
+    "project_number": "1038145602490",
+    "project_id": "alta-pepsi-game-384e2",
+    "storage_bucket": "alta-pepsi-game-384e2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1038145602490:android:8a1e12d9ed538f79425383",
+        "android_client_info": {
+          "package_name": "com.alta_pepsi_game"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1038145602490-e7prtqa3ddhrcgth67rodv6sk959l880.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alta_pepsi_game",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "1038145602490-unaisrb5ul3iv2njvd6jth9hiccojmlh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_b3C51cvlQUwaQpnaZBLDDcBpDEnLCdM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1038145602490-unaisrb5ul3iv2njvd6jth9hiccojmlh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1038145602490:android:c35cabf5bdc2d54e425383",
+        "android_client_info": {
+          "package_name": "com.pepsigame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1038145602490-unaisrb5ul3iv2njvd6jth9hiccojmlh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_b3C51cvlQUwaQpnaZBLDDcBpDEnLCdM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1038145602490-unaisrb5ul3iv2njvd6jth9hiccojmlh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
