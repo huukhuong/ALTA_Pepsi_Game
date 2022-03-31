@@ -12,6 +12,9 @@ import React, { useRef, useState, useEffect } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Header } from '../components';
 import Colors from '../ultils/Colors'
+import * as ImagePicker from 'react-native-image-picker';
+import { QRreader } from 'react-native-qr-decode-image-camera';
+import { PermissionsAndroid } from 'react-native';
 
 const ScanBillScreen = ({ navigation, route }) => {
 
@@ -21,19 +24,70 @@ const ScanBillScreen = ({ navigation, route }) => {
     const [billImage, setBillImage] = useState(require('../assets/imgs/bill.png'));
     const [modalErrorShow, setModalErrorShow] = useState(false);
     const [modalSuccessShow, setModalSuccessShow] = useState(false);
+    const [count, setCount] = useState(0);
 
     useEffect(() => {
-        takePicture();
+        // takePicture();
     }, [])
 
-    const takePicture = () => {
-        console.log('Take picture');
+    const takePicture = async () => {
+        await requestCameraPermission();
+        const options = {
+            maxWidth: 2000,
+            maxHeight: 2000,
+            storageOptions: {
+                skipBackup: true,
+                path: 'images'
+            }
+        };
+        ImagePicker.launchCamera(options, response => {
+            if (response.didCancel) {
+                console.log('User cancelled image picker');
+            } else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+            } else if (response.customButton) {
+                console.log('User tapped custom button: ', response.customButton);
+            } else {
+                console.log(response);
+                const path = { uri: response.assets[0].uri };
+                setBillImage(path);
+                if (count % 2 == 0) {
+                    setModalErrorShow(true)
+                    setModalSuccessShow(false);
+                } else {
+                    setModalErrorShow(false)
+                    setModalSuccessShow(true);
+                }
+                setCount(count + 1);
+            }
+        });
     }
 
-    const validateQRCode = async () => {
-
+    const validateQRCode = () => {
+        takePicture();
     }
 
+    const requestCameraPermission = async () => {
+        try {
+            const granted = await PermissionsAndroid.request(
+                PermissionsAndroid.PERMISSIONS.CAMERA,
+                {
+                    title: "App Camera Permission",
+                    message: "App needs access to your camera ",
+                    buttonNeutral: "Ask Me Later",
+                    buttonNegative: "Cancel",
+                    buttonPositive: "OK"
+                }
+            );
+            if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+                console.log("Camera permission given");
+            } else {
+                console.log("Camera permission denied");
+            }
+        } catch (err) {
+            console.warn(err);
+        }
+    }
     const ModalError = () => {
         return (
             <Modal

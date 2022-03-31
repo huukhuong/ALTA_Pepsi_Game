@@ -36,6 +36,10 @@ const HomeScreen = ({ navigation, route }) => {
         navigation.navigate('PlayGame', { playType: 'quy đổi' });
     }
 
+    const onPressCollection = () => {
+        navigation.navigate('Collection');
+    }
+
     useEffect(() => {
     }, [])
 
@@ -211,7 +215,8 @@ const HomeScreen = ({ navigation, route }) => {
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={styles.btn}
-                    activeOpacity={.6}>
+                    activeOpacity={.6}
+                    onPress={onPressCollection}>
                     <Image source={require('../assets/imgs/btn_album.png')} />
                 </TouchableOpacity>
                 <TouchableOpacity

@@ -2,7 +2,7 @@ import React from "react";
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
-import { CongratulationScreen, HomeScreen, LoginScreen, OTPScreen, PlayGameScreen, RulesScreen, ScanBillScreen, SignupScreen, TutorialScreen } from "./src/screens";
+import { CollectionScreen, CongratulationScreen, HomeScreen, LoginScreen, OTPScreen, PlayGameScreen, RulesScreen, ScanBillScreen, SignupScreen, TutorialScreen } from "./src/screens";
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +21,7 @@ function App() {
 				<Stack.Screen name="PlayGame" component={PlayGameScreen} />
 				<Stack.Screen name="Congratulation" component={CongratulationScreen} />
 				<Stack.Screen name="ScanBill" component={ScanBillScreen} />
+				<Stack.Screen name="Collection" component={CollectionScreen} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);
