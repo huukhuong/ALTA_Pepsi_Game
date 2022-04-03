@@ -40,6 +40,10 @@ const HomeScreen = ({ navigation, route }) => {
         navigation.navigate('Collection');
     }
 
+    const onPressGiftDetail = () => {
+        navigation.navigate('GiftDetail');
+    }
+
     useEffect(() => {
     }, [])
 
@@ -221,7 +225,8 @@ const HomeScreen = ({ navigation, route }) => {
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={styles.btn}
-                    activeOpacity={.6}>
+                    activeOpacity={.6}
+                    onPress={onPressGiftDetail}>
                     <Image source={require('../assets/imgs/btn_giftDetail.png')} />
                 </TouchableOpacity>
             </View>

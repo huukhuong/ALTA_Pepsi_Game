@@ -8,6 +8,7 @@ import PlayGameScreen from "./PlayGameScreen";
 import CongratulationScreen from "./CongratulationScreen";
 import ScanBillScreen from "./ScanBillScreen";
 import CollectionScreen from "./CollectionScreen";
+import GiftDetailScreen from './GiftDetailScreen';
 
 export {
     LoginScreen,
@@ -19,5 +20,6 @@ export {
     PlayGameScreen,
     CongratulationScreen,
     ScanBillScreen,
-    CollectionScreen
+    CollectionScreen,
+    GiftDetailScreen
 }

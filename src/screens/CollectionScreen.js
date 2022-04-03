@@ -12,6 +12,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { Header } from '../components'
 import Colors from '../ultils/Colors'
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import LabelCoins from '../components/LabelCoins'
 
 const CollectionScreen = ({ navigation, route }) => {
 
@@ -47,6 +48,7 @@ const CollectionScreen = ({ navigation, route }) => {
                     left: 0,
                     bottom: 0,
                     right: 0,
+                    resizeMode: 'cover'
                 }} />
 
             <Image
@@ -88,40 +90,6 @@ const CollectionScreen = ({ navigation, route }) => {
                 }} />
 
         </View>
-    }
-
-    const LabelCoins = ({ coins }) => {
-        return (
-            <View style={{
-                alignItems: 'center'
-            }}>
-                <Image
-                    source={require('../assets/imgs/lbl_coinsBackground.png')}
-                    style={{
-                        width: 100,
-                        height: 100
-                    }} />
-                <View style={{
-                    justifyContent: 'center',
-                    height: 100,
-                    position: 'absolute',
-                }}>
-                    <Text style={{
-                        color: '#fff',
-                        fontSize: 28,
-                        fontWeight: 'bold',
-                        textAlign: 'center'
-                    }}>
-                        {coins}
-                    </Text>
-                </View>
-                <Image
-                    source={require('../assets/imgs/lbl_coinsCollection.png')}
-                    style={{
-                        marginTop: 12
-                    }} />
-            </View>
-        )
     }
 
     return (
