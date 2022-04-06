@@ -79,7 +79,7 @@ const OTPScreen = ({ navigation, route }) => {
             console.log(e);
         }
 
-        // navigation.navigate('Home');
+        navigation.navigate('Home');
     }
 
     useEffect(() => {
